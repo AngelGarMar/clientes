@@ -163,7 +163,7 @@ public class ClienteServiceImpl implements ClienteService {
         Optional<Cliente> clienteOptional = clienteRepository.findByIdAndEstatus(idCliente, 1);
         if (clienteOptional.isEmpty()) {
             log.info("no existe el cliente");
-            return new ResponseService(Constants.RESPONSE_TYPE_SUCCESS, Constants.CLIENT_UNKNOWN, null);
+            return new ResponseService(Constants.RESPONSE_TYPE_ERROR, Constants.CLIENT_UNKNOWN, null);
         }
         Cliente cliente = clienteOptional.get();
         ClienteResponse clienteResponse = new ClienteResponse(cliente, getPuntos(idCliente));
